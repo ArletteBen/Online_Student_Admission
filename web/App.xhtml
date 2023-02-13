@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Student registration</title>
+         <h:outputStylesheet library="css" name="bootstrap.min.css"/>    
+        <style>
+            body{background-color: whitesmoke;}
+           
+            #tabWrapper{background-color: whitesmoke;}
+            #tabTitle{background-color: #82e238}
+            
+            .tab1{background-color: #82e238;}
+              .tab2{background-color: #82e238;}
+            .tab3{background-color: #82e238;}
+        </style>
+    </h:head>
+    <h:body>
+          <div class="container">
+            <div class="navbar navbar-inverse">
+                <center style="color: whitesmoke;margin-top: 5px">  <h1>ONLINE STUDENT REGISTRATION  </h1></center>
+            </div>
+            
+       
+    
+        
+        <h:form>
+       
+        <div id="tabWrapper">
+        <div id="tabTitle">
+          
+               <h:commandButton class ="tab1" value="Home" action="#"/>  
+           <h:commandButton class ="tab2" value="Registration" action="personalInfo" />
+            <h:commandButton class ="tab3" value="My account" action="Myaccount" /> 
+            <h:commandButton class ="tab3" value="Admin" action="Admin" /> 
+        </div>
+          
+        </div> 
+            
+              
+      
+       
+           
+        </h:form>
+         </div>
+    </h:body>
+</html>
+

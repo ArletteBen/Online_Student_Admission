@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Academic Background</title>
+           <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    </h:head>
+   
+    <h:body>
+         <div class="container">
+            <div class="navbar navbar-inverse">
+                <center style="color: whitesmoke"> <h1>Academic Background</h1></center>
+            </div>
+     
+      
+        <h:form>
+            
+                 
+            <h:panelGrid columns="3" border="2" >
+                <h:outputLabel value="level"/>
+                <h:outputLabel value="school Name"/>
+                 <h:outputLabel value="years"/>
+                  <h:outputLabel value="A'Level"/>
+                 <h:inputTextarea a:placeholder="schools must be separated by a comma" value="#{pers.student.ALevel}" required="true"/>
+                 <h:inputTextarea a:placeholder="years must be separated by a comma" value="#{pers.student.ALevelFromTill}" required="true"/>
+                      <h:outputLabel value="O'Level"/>  
+                      <h:inputTextarea a:placeholder="schools must be separated by a comma" value="#{pers.student.olevel}" required="true"/>
+                      <h:inputTextarea a:placeholder="years must be separated by a comma" value="#{pers.student.olevelFromTil}" required="true"/>
+                    <h:outputLabel value="primary"/>
+                    <h:inputTextarea a:placeholder="schools must be separated by a comma" value="#{pers.student.prim}" required="true"/>
+                    <h:inputTextarea a:placeholder="years must be separated by a comma" value="#{pers.student.primaryFromTil}" required="true"/>
+            </h:panelGrid><br/>
+            <h:panelGrid columns="2">
+                
+                <h:commandButton value="Back" action="personalInfo" class="btn btn-success"></h:commandButton>
+            <h:commandButton value="Next" action="Other" class="btn btn-success"></h:commandButton>
+            </h:panelGrid>
+             
+        </h:form>
+      </div>
+    </h:body>
+  
+</html>
+

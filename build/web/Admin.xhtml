@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Admin Form</title>
+           <h:outputStylesheet library="css" name="bootstrap.min.css"/>    
+    </h:head>
+    <h:body>
+         <div class="container">
+            <div class="navbar navbar-inverse">
+                <center style="color: whitesmoke">  <h1>Admin Form</h1></center>
+            </div>
+              </div>
+        <center>
+       <h:form>
+       
+           <span>
+           <h4><u>Sign in</u></h4>
+         <h:panelGrid columns="2">
+             
+                <h:outputLabel id="username" value="ID"/>
+                <h:inputText value="#{pers.staffId}" class="form-control" style="margin: 5px" />
+                   <h:outputLabel id="password" value="password"/>
+                   <h:inputSecret value="#{pers.password}" class="form-control" style="margin: 5px"  />
+                   <h:commandButton value="login" action="#{pers.checkAdminLogin()}" class="btn btn-success"/><br/>
+                   
+            </h:panelGrid> 
+            
+           </span>
+              
+            
+            <h4>Create your Account here if you are new</h4>  
+       <h:panelGrid columns="2">
+             <h:outputLabel  value="ID"/>
+           <h:inputText value="#{pers.staffac.staffId}" class="form-control" style="margin: 5px" />
+            <h:outputLabel  value="password"/>
+           <h:inputSecret value="#{pers.staffac.password}" class="form-control" style="margin: 5px" />
+           <h:outputLabel  value=" confirm password"/>
+       <h:inputSecret value="#{pers.password2}" class="form-control" style="margin: 5px">
+         
+        </h:inputSecret>
+     
+        <h:commandButton  value="OK" action="#{pers.checkAdminPass()}" class="btn btn-success"/>  
+            </h:panelGrid>
+       
+       
+        </h:form>
+             </center> 
+    </h:body>
+</html>
+

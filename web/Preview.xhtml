@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Previous page</title>
+         <h:outputStylesheet library="css" name="bootstrap.min.css"/> 
+          <style>
+            body{background-color: whitesmoke;}
+           
+            #tabWrapper{background-color: wheat;}
+            #tabTitle{background-color: wheat;}
+            
+            .tab1{background-color: wheat;}
+            .tab2{background-color: wheat;}
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <center style="color: whitesmoke"><h1>view all before submission</h1></center>
+            </div>
+     
+        <h:form>
+            <div id="tabWrapper">
+        <div id="tabTitle">
+          
+               <h:commandButton class ="tab1" value="last step of registration" disabled="true"/>  
+               <h:commandButton class ="tab2" value="Logout" action="#{pers.logout()}" /> 
+         
+        </div>
+          
+        </div> 
+              
+             <h:panelGrid columns="2">
+                      <h:outputLabel value="First name:"/>
+                      <h:outputLabel  value="#{pers.student.fname}" />
+                    <h:outputLabel value="Last name:"/>
+                 <h:outputLabel  value="#{pers.student.lname}" />
+                 </h:panelGrid>
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel value="Gender:"/>
+                  <h:outputLabel value="#{pers.student.gender}"/>
+               
+               <h:outputLabel value="email:"/>
+               <h:outputLabel value="#{pers.student.email}"/>
+               <h:outputLabel value="phone Number:"/>
+               <h:outputLabel value="#{pers.student.phone}"/>
+         </h:panelGrid>
+             <h:outputLabel value="Address"/>
+            <h:panelGrid columns="2" border="1">
+                
+                
+                 <h:outputLabel value="province:"/>
+                 <h:outputLabel value="#{pers.provId}"/>
+                    <h:outputLabel value="District:"/>  
+                    <h:outputLabel value="#{pers.distId}"/>
+                 </h:panelGrid>
+            <h:panelGrid columns="2">
+                 <h:outputLabel value="year Level:"/>
+               <h:outputLabel value="#{pers.student.yearLevel}"/>
+                 <h:outputLabel value="faculty"/>  
+                 <h:outputLabel value="#{pers.facId}"/>
+            <h:outputLabel value="departement:"/>    
+            <h:outputLabel  value="#{pers.depId}"/>   
+           <h:outputLabel value="person to contact in case of emergency:"/>     
+             <h:outputLabel value="#{pers.student.guardian}"/> 
+            </h:panelGrid>
+              
+              <h:panelGrid columns="3" border="2" >
+                <h:outputLabel value="level"/>
+                <h:outputLabel value="school Name"/>
+                 <h:outputLabel value="years"/>
+                  <h:outputLabel value="A'Level"/>
+                 <h:outputLabel value="#{pers.student.ALevel}"/>
+                 <h:outputLabel value="#{pers.student.ALevelFromTill}"/>
+                      <h:outputLabel value="O'Level"/>  
+                      <h:outputLabel value="#{pers.student.olevel}"/>
+                      <h:outputLabel value="#{pers.student.olevelFromTil}"/>
+                    <h:outputLabel value="primary"/>
+                    <h:outputLabel value="#{pers.student.prim}"/>
+                    <h:outputLabel value="#{pers.student.primaryFromTil}"/>
+            </h:panelGrid>
+             <h4>Skills/Talents</h4>
+             <h:panelGrid columns="2">
+               
+               
+                <h:outputLabel value="what are your Talents:"/>
+                <h:outputLabel  value="#{pers.student.otherTalents}" />
+             </h:panelGrid>
+                <h4>Sports</h4>
+                <h:panelGrid columns="2">
+                 <h:outputLabel value="which kind of Sports do you like:"/>
+                 <h:outputLabel   value="#{pers.student.otherSports}"/>
+                 <h:outputLabel value="Do you have any scholarship:"/>
+                 <h:outputLabel value="#{pers.student.scholarship}" />
+                     
+                 <h:outputLabel value="if Yes who is your Sponsor:"/>
+                 <h:outputLabel value="#{pers.student.sponsor}"/>
+                 <h:outputLabel value="you can add your comments Here:"/>
+                 <h:outputLabel value="#{pers.student.comment}"/>
+                </h:panelGrid>
+                
+           
+            <h:panelGrid columns="3">
+              <h:commandButton value="Back" action="Academic" class="btn btn-success"/>  
+                 <h:commandButton value="Next" action="Other" class="btn btn-success"/>  
+                 <h:commandButton value="Submit" action="#{pers.create()}" class="btn btn-success"/>
+                  </h:panelGrid>
+                
+           
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

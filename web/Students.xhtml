@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Approval Form</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h1><u>Approval or rejection form</u></h1>
+       
+        <h:form>
+            <div>
+                Rules:
+                1.if registered students are more than 900 others must be rejected<br/>
+                2.Registered students in each department must not exceed 100,if so the remaining ones must be rejected
+            </div>
+            <br/>
+                
+            
+         <h4>Registered students</h4> 
+         <h:dataTable value="#{pers.allStudents}"  var="student" border="2">
+        <h:column>
+			<f:facet name="header">student id</f:facet>
+         #{student.studId}
+      </h:column>
+		<h:column>
+			<f:facet name="header">first name</f:facet>
+         #{student.fname}
+      </h:column>
+		<h:column>
+			<f:facet name="header">last name</f:facet>
+           #{student.lname}
+       </h:column>
+		<h:column>
+			<f:facet name="header">date of birth</f:facet>
+           #{student.dob}
+       </h:column>
+		<h:column>
+			<f:facet name="header">gender</f:facet>
+           #{student.gender}
+       </h:column>
+           
+            
+             <h:column>
+            <f:facet name="header">phone number</f:facet>
+         #{student.phone}
+      </h:column>
+		<h:column>
+			<f:facet name="header">phone to contact in case of emergency</f:facet>
+         #{student.guardian}
+      </h:column>
+		<h:column>
+			<f:facet name="header">e-mail</f:facet>
+           #{student.email}
+       </h:column>
+        
+	 <h:column>
+			<f:facet name="header">year level</f:facet>
+         #{student.yearLevel}
+      </h:column>
+               <h:column>
+			<f:facet name="header">Program</f:facet>
+           #{student.program}
+       </h:column>
+		<h:column>
+			<f:facet name="header">department</f:facet>
+         #{student.education}
+      </h:column>
+           
+		
+		<h:column>
+			<f:facet name="header">sponsor</f:facet>
+           #{student.sponsor}
+       </h:column>
+            <h:column>
+			<f:facet name="header">comment</f:facet>
+           #{student.comment}
+       </h:column>
+		
+		 <h:column>
+			<f:facet name="header">Approve/reject</f:facet>
+                        <h:commandButton value="Approve" action="#{pers.approve(student)}" class="btn btn-success"/>
+                        <h:commandButton value="Reject" action="#{pers.reject(student)}" class="btn btn-success"/>
+       </h:column>
+		
+
+
+
+        
+        </h:dataTable>
+         
+        
+        </h:form>
+    </h:body>
+</html>
+

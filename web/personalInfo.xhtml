@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Personal Information</title>
+         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <style>
+            *{font-family: serif;}
+            #searchPanel{border-bottom: 1px solid #DDD;
+            width:600px;
+            margin: 50px auto;
+            padding: 10px;}
+            #searchPanel input[type='text'] {
+                width: 100%;
+                border: none;
+                border-bottom:  1px solid #DDD;
+                outline: none;
+                font-size: 18px;
+                font-family: fantasy;
+            }
+            #searchPanel ul{
+                padding: 0px;
+                margin: 0px;
+                list-style-type: none;
+                
+            }
+            #searchPanel ul li{padding-top: 5px;
+            padding-bottom: 5px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            font-family: serif;}
+            #searchPanel ul li:hover{
+                background-color: #f3f3f3;
+            }
+             body{background-color: whitesmoke;}
+           
+            
+        </style>
+    </h:head>
+    
+    <h:body>
+        
+     <div class="container">
+            <div class="navbar navbar-inverse">
+                <center style="color: whitesmoke"><h1> Personal Information</h1></center>
+            </div>
+     
+        <h:form>
+           
+          
+                
+                 <h:panelGrid columns="3">
+                      <h:outputLabel value="names"/>
+                      <h:inputText a:placeholder="first name" value="#{pers.student.fname}" required="true" class="form-control" style="margin: 5px" label="first name"></h:inputText>
+                   
+                 <h:inputText a:placeholder="last name" value="#{pers.student.lname}" required="true" class="form-control" style="margin: 5px" label="last name"></h:inputText>
+                 </h:panelGrid>
+                
+                   <h:panelGrid columns="2">        
+                <h:outputLabel value="Gender"/>
+                <h:selectOneMenu value="#{pers.student.gender}" required="true" class="form-control" style="margin: 5px" label="Gender">
+                      <f:selectItem noSelectionOption="true" itemLabel="--Gender--"></f:selectItem>
+                    <f:selectItems value="#{pers.genders}"  itemValue="#{gender}" />
+                </h:selectOneMenu>
+                 <h:outputLabel >Date of birth</h:outputLabel>
+                 <h:inputText a:placeholder="example:dd/MM/yyyy" value="#{pers.student.dob}" required="true" class="form-control" style="margin: 5px" label="date of birth">
+                    <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                </h:inputText>
+                
+                 
+          
+                 <h:outputLabel value="email"/>
+               <h:inputText value="#{pers.student.email}" required="true" class="form-control" style="margin: 5px" label="email"></h:inputText>
+               <h:outputLabel value="phone Number" />
+               <h:inputText value="#{pers.student.phone}" required="true" class="form-control" style="margin: 5px" label="phone number"></h:inputText>
+        
+                 <h:outputLabel value="Residence"/>
+                 <h:panelGrid columns="2">
+                  <label for="validationCustom01">Province</label>
+                  <h:selectOneMenu value="#{pers.provId}" class="form-control" style="color: black;margin: 5px " label="province" required="true">
+                        <f:selectItems value="#{pers.prov}" var="pro" itemLabel="#{pro.locationName}" itemValue="#{pro.LId}"/>
+                        <f:ajax listener="#{pers.distrPro()}" render="dist" event="change"/>
+                    </h:selectOneMenu>
+                        
+                         
+                              <label for="validationCustom01">District</label>
+                              <h:selectOneMenu id="dist" value="#{pers.distId}" class="form-control" style="color: black; " label="district" required="true">
+                            <f:selectItems value="#{pers.dis}" var="di" itemLabel="#{di.locationName}" itemValue="#{di.LId}"/>
+                        </h:selectOneMenu>
+                 </h:panelGrid>
+                 
+               
+               <h:outputLabel value="year Level"/>
+               <h:selectOneMenu value="#{pers.student.yearLevel}" required="true" class="form-control" style="margin: 5px" label="year level">
+                     <f:selectItem noSelectionOption="true" itemLabel="--year level--"></f:selectItem>
+                   <f:selectItems value="#{pers.years}" var="yearLevel" itemValue="#{yearLevel}" />
+                </h:selectOneMenu>
+               <h:outputLabel value="Program"/>
+               
+                 <h:selectOneMenu value="#{pers.student.program}" required="true" class="form-control" style="margin: 5px" label="year level">
+                     <f:selectItem noSelectionOption="true" itemLabel="--Program--"></f:selectItem>
+                     <f:selectItems value="#{pers.programs}" var="yearLevel" itemValue="#{yearLevel}" />
+                </h:selectOneMenu>
+               <h:panelGrid  id="searchPanel" columns="2">
+                     <h:outputLabel value="Search departments"/>
+                     <h:inputText a:placeholder="Search..." autocomplete="off" value="#{pers.display}" class="form-control" style="margin: 5px">
+                         <f:ajax event="keyup" listener="#{pers.search()}" execute="@this" render="resultPanel"/>
+                     </h:inputText>
+                     <h:panelGroup id="resultPanel" layout="block" >
+                        <ul>
+                         <ui:repeat value="#{pers.result}" var="r">
+                             <li>#{r}</li>
+                         </ui:repeat>
+                     </ul>  
+                     </h:panelGroup>
+                    
+               </h:panelGrid><br/>
+               <div>
+                   <h:panelGrid columns="2">
+                         <label for="validationCustom01">Faculty</label>
+                 <h:selectOneMenu value="#{pers.facId}" class="form-control" style="color: black; margin: 5px " label="Faculty" required="true">
+                     <f:selectItems value="#{pers.fac}" var="pro" itemLabel="#{pro.educationName}" itemValue="#{pro.EId}"/>
+                     <f:ajax listener="#{pers.depPro()}" render="dep" event="change"/>
+                    </h:selectOneMenu>
+                        
+                         
+                              <label for="validationCustom01">Department</label>
+                              <h:selectOneMenu id="dep" value="#{pers.depId}" class="form-control" style="color: black; " label="department" required="true">
+                                  <f:selectItems value="#{pers.dep}" var="di" itemLabel="#{di.educationName}" itemValue="#{di.EId}"/>
+                        </h:selectOneMenu>
+                   </h:panelGrid>
+                
+ 
+               </div>
+                  
+            
+              
+               
+              
+                 
+                 <h:outputLabel value="phone to contact in case of emergency"/>
+                 <h:inputText value="#{pers.student.guardian}" required="true"  class="form-control" style="margin: 5px"/>
+                 
+                 <h:commandButton value="Next" action="Academic" class="btn btn-success"> </h:commandButton>
+                     
+                
+            </h:panelGrid>
+          
+        </h:form>
+     </div>
+    </h:body>
+       
+</html>
+
